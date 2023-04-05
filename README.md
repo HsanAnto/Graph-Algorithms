@@ -1,6 +1,6 @@
 ## What to find
 
-In the following respository you will find different graph algorithms. These can be devided in the following groups: elementary algorithms, shortest paths and minimum spanning trees.
+In the following repository, you will find different graph algorithms. This can be divided into the following groups: elementary algorithms, shortest paths and minimum spanning trees.
 
 ## Elementary Algorithms
 - BFS
