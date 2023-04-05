@@ -1,8 +1,8 @@
 import java.util.Arrays;
 
-public class DijkstraAlgorithm 
+public class Dijkstra 
 {
-    public int[] Dijkstra(int[][] graph, int source)
+    public int[] dijkstra(int[][] graph, int source)
     {
         int V = graph.length; // number of vertices in the graph
 

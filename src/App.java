@@ -9,8 +9,11 @@ public class App {
                         {1, 0, 0, 14, 0, 2, 0, 1, 6},
                         {8, 11, 0, 8, 0, 1, 1, 0, 7},
                         {0, 0, 2, 8, 0, 0, 6, 7, 0} };
-        DijkstraAlgorithm dijkstra = new DijkstraAlgorithm();
-        printSolution(dijkstra.Dijkstra(graph, 3), 3);
+        Dijkstra dijkstra = new Dijkstra();
+        printSolution(dijkstra.dijkstra(graph, 5), 5);
+
+        BellmanFord bellman = new BellmanFord();
+        printSolution(bellman.bellmanFord(graph, 5), 5);
 
     }
 
