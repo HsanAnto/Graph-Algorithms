@@ -8,7 +8,7 @@ public class DijkstraAlgorithm
 
         int [] distances = new int[V]; //array where the distances from the origin to each vertex are save
         Arrays.fill(distances, Integer.MAX_VALUE); // initialize all the distances as infinite
-        distances[0] = 0; //the distance from the source to itself is 0
+        distances[source] = 0; //the distance from the source to itself is 0
 
         boolean[] visited = new boolean[V]; //array to mark the vertices already processed
         Arrays.fill(visited, false); // initialize all the vertices as false
