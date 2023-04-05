@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class App {
     public static void main(String[] args) throws Exception {
         int[][] graph = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
@@ -15,14 +17,32 @@ public class App {
         BellmanFord bellman = new BellmanFord();
         printSolution(bellman.bellmanFord(graph, 5), 5);
 
+        FloydWarshall floyd = new FloydWarshall();
+        printFloyd(floyd.floydWarshall(graph));
+
     }
 
     private static void printSolution(int[] dist, int source)
     {
-        System.out.println("Distancia del vertice desde el vertice " + Integer.toString(source)+"\n");
+        System.out.println("\nDistancia del vertice desde el vertice " + Integer.toString(source)+"\n");
         for (int i = 0; i < dist.length; i++)
         {
             System.out.println(i + " \t\t " + dist[i]);
         }
+    }
+
+    private static void printFloyd(int[][] answer)
+    {
+        for (int i = 0; i < answer.length; ++i) 
+        {
+            for (int j = 0; j < answer.length; ++j) 
+            {
+              if (answer[i][j] == Integer.MAX_VALUE)
+                System.out.print("INF ");
+              else
+                System.out.print(answer[i][j] + "  ");
+            }
+            System.out.println();
+          }
     }
 }
