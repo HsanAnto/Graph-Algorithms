@@ -19,6 +19,9 @@ public class App {
         FloydWarshall floyd = new FloydWarshall();
         printFloyd(floyd.floydWarshall(graph));
 
+        BreadthFirstSearch bfs =  new BreadthFirstSearch();
+        System.out.println("\n"+bfs.shortestPathBFS(graph, 0, 2));
+
     }
 
     private static void printSolution(int[] dist, int source)
