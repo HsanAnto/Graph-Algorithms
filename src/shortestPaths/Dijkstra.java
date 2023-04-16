@@ -1,3 +1,4 @@
+package shortestPaths;
 import java.util.Arrays;
 
 public class Dijkstra 

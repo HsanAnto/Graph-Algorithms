@@ -1,3 +1,4 @@
+package shortestPaths;
 public class FloydWarshall
 {
     public int[][] floydWarshall(int[][] graph)
