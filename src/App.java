@@ -1,28 +1,42 @@
 import shortestPaths.*;
 import elementaryAlgorithms.*;
+import MST.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int[][] graph = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
-                        {10, 0, 8, 1, 0, 0, 0, 11, 0},
-                        {0, 8, 0, 7, 5, 4, 0, 0, 2},
-                        {0, 0, 7, 0, 9, 14, 0, 0, 0},
-                        {0, 0, 0, 9, 0, 10, 0, 2, 0},
-                        {0, 3, 4, 0, 10, 0, 2, 0, 0},
-                        {1, 0, 0, 14, 0, 2, 0, 1, 6},
-                        {8, 11, 0, 8, 0, 1, 1, 0, 7},
-                        {0, 0, 2, 8, 0, 0, 6, 7, 0} };
+        int[][] directedGraph = {{0, 4, 0, 0, 0, 0, 0, 8, 0},
+                                {10, 0, 8, 1, 0, 0, 0, 11, 0},
+                                {0, 8, 0, 7, 5, 4, 0, 0, 2},
+                                {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                                {0, 0, 0, 9, 0, 10, 0, 2, 0},
+                                {0, 3, 4, 0, 10, 0, 2, 0, 0},
+                                {1, 0, 0, 14, 0, 2, 0, 1, 6},
+                                {8, 11, 0, 8, 0, 1, 1, 0, 7},
+                                {0, 0, 2, 8, 0, 0, 6, 7, 0} };
+        
+        int[][] undirectedGraph = {{0, 10, 0, 0, 0, 0, 1, 8, 0},
+                                   {10, 0, 8, 0, 0, 3, 0, 11, 0},
+                                   {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                                   {0, 0, 7, 0, 9, 14, 14, 0, 0},
+                                   {0, 0, 0, 9, 0, 10, 0, 2, 0},
+                                   {0, 3, 4, 14, 10, 0, 2, 0, 0},
+                                   {1, 0, 0, 14, 0, 2, 0, 1, 6},
+                                   {8, 11, 0, 0, 2, 0, 1, 0, 7},
+                                   {0, 0, 2, 0, 0, 0, 6, 7, 0}};
         Dijkstra dijkstra = new Dijkstra();
-        printSolution(dijkstra.dijkstra(graph, 5), 5);
+        printSolution(dijkstra.dijkstra(directedGraph, 5), 5);
 
         BellmanFord bellman = new BellmanFord();
-        printSolution(bellman.bellmanFord(graph, 5), 5);
+        printSolution(bellman.bellmanFord(directedGraph, 5), 5);
 
         FloydWarshall floyd = new FloydWarshall();
-        printFloyd(floyd.floydWarshall(graph));
+        printFloyd(floyd.floydWarshall(directedGraph));
 
         BreadthFirstSearch bfs =  new BreadthFirstSearch();
-        System.out.println("\n"+bfs.bfsShortestPath(graph, 0, 6));
+        System.out.println("\n"+bfs.bfsShortestPath(directedGraph, 0, 6)+"\n");
+
+        PrimsAlgorithm prim = new PrimsAlgorithm(undirectedGraph);
+        printFloyd(prim.getMST());
 
     }
 
@@ -49,4 +63,6 @@ public class App {
             System.out.println();
           }
     }
+
+    
 }
