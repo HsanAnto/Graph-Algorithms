@@ -20,7 +20,7 @@ public class App {
         printFloyd(floyd.floydWarshall(graph));
 
         BreadthFirstSearch bfs =  new BreadthFirstSearch();
-        System.out.println("\n"+bfs.shortestPathBFS(graph, 0, 2));
+        System.out.println("\n"+bfs.bfsShortestPath(graph, 0, 6));
 
     }
 

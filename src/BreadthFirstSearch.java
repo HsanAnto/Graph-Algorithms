@@ -1,34 +1,50 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BreadthFirstSearch {
     
 
-    public int shortestPathBFS(int[][] graph, int source, int aim)
+    public List<Integer> bfsShortestPath(int[][] graph, int source, int dest) 
     {
         int V = graph.length;
-        int[] distance = new int[V];
+        Queue<Integer> queue = new LinkedList<>();
         boolean[] visited = new boolean[V];
-        Queue<Integer> queue= new LinkedList<>();
+        int[] parent = new int[V];
+        Arrays.fill(parent, -1);
+        
+        queue.offer(source);
         visited[source] = true;
-        distance[source] = 0;
-        queue.add(source);
 
-        while(!queue.isEmpty())
+        while (!queue.isEmpty()) 
         {
-            int vertex = queue.poll();
-            if (vertex == aim) return distance[aim];
-            for(int i=0; i<V; i++)
+            int current = queue.poll();
+            if (current == dest) 
             {
-                if (graph[vertex][i] > 1 && !visited[i]) 
+                break;
+            }
+
+            for (int neighbor = 0; neighbor < V; neighbor++) 
+            {
+                if (graph[current][neighbor] > 1 && !visited[neighbor]) 
                 {
-                    visited[i] = true;
-                    distance[i] = distance[vertex] + 1;
-                    queue.add(i);
+                    visited[neighbor] = true;
+                    parent[neighbor] = current;
+                    queue.offer(neighbor);
                 }
             }
         }
 
-        return -1;
+        List<Integer> path = new ArrayList<>();
+        for (int i = dest; i != -1; i = parent[i]) 
+        {
+            path.add(i);
+        }
+        Collections.reverse(path);
+
+        return path;
     }
 }
